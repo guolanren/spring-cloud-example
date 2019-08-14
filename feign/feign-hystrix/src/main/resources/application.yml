@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: feign-hystrix
+server:
+  port: 9094
+eureka:
+  instance:
+    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance-id:${server.port}}
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+feign:
+  hystrix:
+    enabled: true
+hystrix:
+  command:
+    default:
+      circuitBreaker:
+        requestVolumnThreshold: 20
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10
+    hello:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 100

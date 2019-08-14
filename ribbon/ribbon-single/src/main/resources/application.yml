@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: ribbon-single
+server:
+  port: 9094
+ribbon:
+  eureka:
+    enabled: false

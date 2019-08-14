@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: hystrix-cache
+server:
+  port: 9094
+eureka:
+  instance:
+    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance-id:${server.port}}
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
