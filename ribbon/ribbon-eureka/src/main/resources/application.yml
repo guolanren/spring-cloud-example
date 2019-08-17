@@ -10,6 +10,10 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
+#eureka-client:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: name.guolanren.component.MyRule
+#    NFLoadBalancerPingClassName: name.guolanren.component.MyPing
 management:
   endpoint:
     shutdown:

@@ -6,3 +6,8 @@ server:
 ribbon:
   eureka:
     enabled: false
+eureka-client:
+  ribbon:
+    listOfServers: http://localhost:9090,http://localhost:9091
+#    NFLoadBalancerRuleClassName: name.guolanren.component.MyRule
+#    NFLoadBalancerPingClassName: name.guolanren.component.MyPing
