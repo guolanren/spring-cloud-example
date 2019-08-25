@@ -1,9 +1,5 @@
 package name.guolanren.config;
 
-import com.netflix.loadbalancer.IPing;
-import com.netflix.loadbalancer.IRule;
-import name.guolanren.component.MyPing;
-import name.guolanren.component.MyRule;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.context.annotation.Bean;
@@ -14,8 +10,8 @@ import org.springframework.web.client.RestTemplate;
  * @author guolanren
  */
 @Configuration
-@RibbonClient(name = "eureka-client")
-public class RibbonConfiguration {
+@RibbonClient(name = "eureka-client", configuration = RibbonConfiguration.class)
+public class EurekaClientConfiguration {
 
     @Bean
     @LoadBalanced
@@ -23,13 +19,4 @@ public class RibbonConfiguration {
         return new RestTemplate();
     }
 
-    @Bean
-    public IPing ping() {
-        return new MyPing();
-    }
-
-    @Bean
-    public IRule rule() {
-        return new MyRule();
-    }
 }

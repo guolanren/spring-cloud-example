@@ -14,7 +14,6 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 /**
  * @author guolanren
  */
-@Configuration
 public class EurekaClientFeignClientsConfiguration {
 
     /**

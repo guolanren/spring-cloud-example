@@ -1,6 +1,6 @@
 spring:
   application:
-    name: hystrix-eureka
+    name: feign-upload
 server:
   port: 9094
 eureka:

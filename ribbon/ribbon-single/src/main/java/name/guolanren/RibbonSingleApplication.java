@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * @author 郭耀展
+ * @author guolanren
  */
 @SpringBootApplication
 public class RibbonSingleApplication {
