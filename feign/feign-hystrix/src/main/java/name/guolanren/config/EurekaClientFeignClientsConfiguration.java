@@ -7,7 +7,6 @@ import feign.Retryer;
 import feign.hystrix.SetterFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 

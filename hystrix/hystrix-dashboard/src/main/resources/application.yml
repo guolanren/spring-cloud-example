@@ -2,7 +2,7 @@ spring:
   application:
     name: hystrix-dashboard
 server:
-  port: 9094
+  port: 8764
 eureka:
   instance:
     instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance-id:${server.port}}
@@ -15,4 +15,4 @@ management:
   endpoints:
     web:
       exposure:
-        include: ["health", "info", "hystrix.stream"]
+        include: ["health", "info", "turbine.stream"]

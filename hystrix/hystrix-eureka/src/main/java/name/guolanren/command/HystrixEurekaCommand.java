@@ -3,6 +3,8 @@ package name.guolanren.command;
 import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -19,6 +21,8 @@ import org.springframework.web.client.RestTemplate;
                 @HystrixProperty(name = "coreSize", value = "1")
         })
 public class HystrixEurekaCommand {
+
+    private static final Logger logger = LoggerFactory.getLogger(HystrixCommand.class);
 
     @Autowired
     private RestTemplate restTemplate;
@@ -39,7 +43,8 @@ public class HystrixEurekaCommand {
         return restTemplate.getForObject("http://eureka-client/hell?name={name}", String.class);
     }
 
-    public String hellFallback(String name) {
+    public String hellFallback(String name, Throwable throwable) {
+        logger.error(throwable.getMessage());
         return "hell error";
     }
 }
