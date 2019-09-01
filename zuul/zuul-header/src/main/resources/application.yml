@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: zuul-header
+server:
+  port: 8700
+eureka:
+  instance:
+    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance-id:${server.port}}
+    hostname: ${spring.cloud.client.hostname}
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["health", "info", "hystrix.stream", "routes", "filters"]
+
+zuul:
+  routes:
+    ec:
+      url: http://localhost:9090/
+      path: /ec/**
+      sensitive-headers: cookie,set-cookie,authorization
+      ignored-headers: cookie,set-cookie,authorization
+  # 敏感Header(客户端不传递)
+  sensitive-headers: cookie,set-cookie,authorization
+  # 忽略Header(服务间不传递)
+  ignored-headers: cookie,set-cookie,authorization

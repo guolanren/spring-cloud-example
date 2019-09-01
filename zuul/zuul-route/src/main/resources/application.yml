@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: zuul-route
+server:
+  port: 8700
+eureka:
+  instance:
+    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance-id:${server.port}}
+    hostname: ${spring.cloud.client.hostname}
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["health", "info", "hystrix.stream", "routes", "filters"]
+
+zuul:
+  routes:
+    # 简单路由(SimpleHostRoutingFilter)
+    ec1:
+      url: http://localhost:9090/
+      path: /ec1/**
+    # Ribbon路由(RibbonRoutingFilter)
+    eureka-client: /ec2/**
+    ec2:
+      service-id: eureka-client
+      path: /ec2/**
+    # 转发路由(SendForwardFilter)
+    ec3:
+      url: forward:/ec1
+      path: /ec3/**
+  # 忽略服务
+  ignored-services: ignored-service, '*'
+  # 忽略路由
+  ignored-patterns: /ec1/hell
