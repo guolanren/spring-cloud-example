@@ -1,0 +1,30 @@
+# Spring Boot启动先初始化启动BootstrapContext(读取bootstrap.yml/properties)，再启动ApplicationContext(读取application.yml/properties)
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      uri: http://localhost:8700
+      # 配置分支
+      label: master
+      # 配置文件名(默认 application -> ${spring.application.name} -> ${spring.cloud.config.name})
+      name: microservice
+      # 配置文件名后缀
+      profile: prod
+      # 快速失败(无法连接配置服务器，则会终止启动容器)
+      fail-fast: true
+      # 初始重试间隔(默认1000ms)
+      retry.initial-interval: 1000
+      # 最大重试次数(默认6)
+      retry.max-attempts: 6
+      # 最大的重试间隔(默认2000ms)
+      retry.max-interval: 2000
+      # 重试间隔的递增系数(默认1.1)
+      retry.multiplier: 1.1
+
+# 配置刷新端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
