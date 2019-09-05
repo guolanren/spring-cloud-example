@@ -1,3 +1,12 @@
+eureka:
+  instance:
+    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance-id:${server.port}}
+    hostname: ${spring.cloud.client.hostname}
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
 # Spring Boot启动先初始化启动BootstrapContext(读取bootstrap.yml/properties)，再启动ApplicationContext(读取application.yml/properties)
 spring:
   application:
@@ -9,6 +18,11 @@ spring:
       label: master
       # 配置文件名(默认 application -> ${spring.application.name} -> ${spring.cloud.config.name})
       name: microservice
+      discovery:
+        # 开启服务发现
+        enabled: true
+        # config server 的 serviceId
+        service-id: config-server
       # 配置文件名后缀
       profile: prod
       # 快速失败(无法连接配置服务器，则会终止启动容器)

@@ -13,7 +13,6 @@ import org.springframework.web.client.RestTemplate;
  */
 @SpringBootApplication
 @EnableEurekaClient
-@EnableCircuitBreaker
 public class HystrixCacheApplication {
 
     public static void main(String[] args) {
