@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: gateway-predicate
+server:
+  port: 9080
+eureka:
+  instance:
+    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance-id:${server.port}}
+    hostname: ${spring.cloud.client.hostname}
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["health", "info", "hystrix.stream", "routes", "filters"]
