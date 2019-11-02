@@ -9,8 +9,9 @@ eureka:
   server:
       enable-self-preservation: false
   instance:
-    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance-id:${server.port}}
-    hostname: peer1
+#    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance-id:${server.port}}
+    instanceId: ${spring.cloud.client.ip-address}:${server.port}
+    hostname: ${spring.cloud.client.ip-address}-1
     prefer-ip-address: true
   client:
     serviceUrl:
@@ -27,8 +28,9 @@ eureka:
   server:
       enable-self-preservation: false
   instance:
-    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance-id:${server.port}}
-    hostname: peer2
+#    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance-id:${server.port}}
+    instanceId: ${spring.cloud.client.ip-address}:${server.port}
+    hostname: ${spring.cloud.client.ip-address}-2
     prefer-ip-address: true
   client:
     serviceUrl:
@@ -45,8 +47,9 @@ eureka:
   server:
       enable-self-preservation: false
   instance:
-    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance-id:${server.port}}
-    hostname: peer3
+#    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance-id:${server.port}}
+    instanceId: ${spring.cloud.client.ip-address}:${server.port}
+    hostname: ${spring.cloud.client.ip-address}-3
     prefer-ip-address: true
   client:
     serviceUrl:

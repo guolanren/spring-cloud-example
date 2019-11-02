@@ -8,8 +8,9 @@ eureka:
   server:
     enable-self-preservation: false
   instance:
-    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance-id:${server.port}}
-    hostname: ${spring.cloud.client.hostname}
+#    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance-id:${server.port}}
+    instanceId: ${spring.cloud.client.ip-address}:${server.port}
+    hostname: ${spring.cloud.client.ip-address}
     prefer-ip-address: true
   client:
     registerWithEureka: false

@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Bean;
  * @author guolanren
  */
 @SpringBootApplication
-public class GatewayPredicateApplication {
+public class GatewayProxyRouteApplication {
 
     public static final String EUREKA_CLIENT_SERVICE = "lb://eureka-client";
 
@@ -31,7 +31,7 @@ public class GatewayPredicateApplication {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(GatewayPredicateApplication.class, args);
+        SpringApplication.run(GatewayProxyRouteApplication.class, args);
     }
 
 }

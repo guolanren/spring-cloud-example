@@ -51,7 +51,7 @@ public class GatewayPredicateApplication {
                         .id("query"))
                 .route(r -> r.remoteAddr("192.168.1.1/24")
                         .uri(EUREKA_CLIENT_SERVICE)
-                        .id("remote-addr"))
+                        .id("remote_addr"))
                 .route(r -> r.weight("group1", 8)
                         .uri(EUREKA_CLIENT_SERVICE)
                         .id("weight_high"))
