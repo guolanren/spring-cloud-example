@@ -1,25 +1,24 @@
 spring:
   application:
-    name: gateway-predicate
+    name: gateway-global-filter
   cloud:
     gateway:
+      # 默认过滤器
+      default-filters:
+      - AddRequestParameter=name, guolanren
+      - AddResponseHeader=X-Response-Default-Foo, Default-Bar
+
       routes:
-      - id: after
+      - id: hello
         uri: lb://eureka-client
         predicates:
         - Path=/hello
-        - After=2007-12-03T10:15:30+01:00[Europe/Paris]
-      - id: before
-        uri: lb://eureka-client
-        predicates:
-        - Path=/hell
-        - Before=2007-12-03T10:15:30+01:00[Europe/Paris]
 
 server:
   port: 9080
 eureka:
   instance:
-#    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance-id:${server.port}}
+    # instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance-id:${server.port}}
     instanceId: ${spring.cloud.client.ip-address}:${server.port}
     hostname: ${spring.cloud.client.ip-address}
     prefer-ip-address: true

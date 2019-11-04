@@ -4,10 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
-import org.springframework.cloud.gateway.support.ServerWebExchangeUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
-import org.springframework.web.server.ServerWebExchange;
 
 import java.time.ZonedDateTime;
 
