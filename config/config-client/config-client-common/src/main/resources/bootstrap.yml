@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: config-client-common
+  cloud:
+    config:
+      uri: http://localhost:8888
+      # 配置文件名(默认 application -> ${spring.application.name} -> ${spring.cloud.config.name})
+      name: config-client-common
+      # 配置文件名后缀
+      profile: default
+      # 配置分支
+      label: master
+      # Config Client Fail Fast(无法连接配置服务器，则会终止启动容器)
+#      fail-fast: true
+#      retry:
+        # 初始重试间隔(默认1000ms)
+#        initial-interval: 1000
+        # 最大重试次数(默认6)
+#        max-attempts: 6
+        # 最大的重试间隔(默认2000ms)
+#        max-interval: 2000
+        # 重试间隔的递增系数(默认1.1)
+#        multiplier: 1.1
+#      username: guolanren
+#      password: password

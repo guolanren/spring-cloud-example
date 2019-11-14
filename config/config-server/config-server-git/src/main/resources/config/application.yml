@@ -1,0 +1,43 @@
+eureka:
+  instance:
+#    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance-id:${server.port}}
+    instanceId: ${spring.cloud.client.ip-address}:${server.port}
+    hostname: ${spring.cloud.client.ip-address}
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+server:
+  port: 8888
+spring:
+  application:
+    name: config-server-git
+  cloud:
+    config:
+      server:
+        git:
+          clone-on-start: true
+          uri: https://github.com/guolanren/config-server-git
+#          username: guolanren
+#          password: password
+          # Skipping SLL Certificate Validation
+#          skip-ssl-validation: true
+          # Setting HTTP Connection Timeout
+#          timeout: 5
+          # 搜索目录(找不到则从根目录寻找)
+#          search-paths: '{application}/{profile}'
+          # Force pull in Git Repositories
+#          force-pull: true
+          # Git Refresh Rate
+#          refresh-rate: 0
+#        repos:
+#          app1: https://github.com/guolanren/app1
+#          app2:
+#            clone-on-start: true
+#            pattern: app2*/dev*,*app2*/dev*
+#            uri: https://github.com/guolanren/app2
+#          app3:
+#            pattern:
+#              - 'app3*'
+#            uri: file:/home/guolanren/app3

@@ -1,0 +1,28 @@
+eureka:
+  instance:
+#    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance-id:${server.port}}
+    instanceId: ${spring.cloud.client.ip-address}:${server.port}
+    hostname: ${spring.cloud.client.ip-address}
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+server:
+  port: 8888
+spring:
+  application:
+    name: config-server-asymmetric-encryption-decryption
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/guolanren/config-server-git
+
+# 非对称加密
+encrypt:
+  key-store:
+    location: classpath:/server.jks
+    password: letmein
+    alias: thekey
+    secret: password
