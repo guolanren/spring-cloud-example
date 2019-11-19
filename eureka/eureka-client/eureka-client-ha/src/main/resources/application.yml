@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: eureka-client-ha
+server:
+  port: 9091
+eureka:
+  instance:
+    instanceId: ${spring.cloud.client.ip-address}:${server.port}
+    hostname: ${spring.cloud.client.ip-address}
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:8761/eureka,http://peer2:8762/eureka,http://peer3:8763/eureka

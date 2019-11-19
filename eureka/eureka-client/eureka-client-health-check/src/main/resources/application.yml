@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: eureka-client-health-check
+server:
+  port: 9090
+eureka:
+  instance:
+    instanceId: ${spring.cloud.client.ip-address}:${server.port}
+    hostname: ${spring.cloud.client.ip-address}
+    prefer-ip-address: true
+  client:
+    healthcheck:
+      enabled: true
+    instanceInfoReplicationIntervalSeconds: 10
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info,health,service-registry

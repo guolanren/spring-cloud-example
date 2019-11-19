@@ -1,0 +1,33 @@
+---
+spring:
+  profiles: c1
+  application:
+    name: eureka-client-common
+server:
+  port: 9090
+eureka:
+  instance:
+#    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance-id:${server.port}}
+    instanceId: ${spring.cloud.client.ip-address}:${server.port}
+    hostname: ${spring.cloud.client.ip-address}
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+---
+spring:
+  profiles: c2
+  application:
+    name: eureka-client-common
+server:
+  port: 9091
+eureka:
+  instance:
+#    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance-id:${server.port}}
+    instanceId: ${spring.cloud.client.ip-address}:${server.port}
+    hostname: ${spring.cloud.client.ip-address}
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
