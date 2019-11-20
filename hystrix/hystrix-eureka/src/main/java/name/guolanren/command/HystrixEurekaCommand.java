@@ -30,7 +30,7 @@ public class HystrixEurekaCommand {
     @HystrixCommand(groupKey = "group-key", commandKey = "command-key", threadPoolKey = "threadPool-key",
             fallbackMethod = "helloFallback")
     public String hello(String name) {
-        return restTemplate.getForObject("http://eureka-client/hello?name={name}", String.class, name);
+        return restTemplate.getForObject("http://eureka-client-common/hello?name={name}", String.class, name);
     }
 
     public String helloFallback(String name) {
@@ -40,7 +40,7 @@ public class HystrixEurekaCommand {
 
     @HystrixCommand(fallbackMethod = "hellFallback", ignoreExceptions = {Exception.class})
     public String hell(String name) {
-        return restTemplate.getForObject("http://eureka-client/hell?name={name}", String.class);
+        return restTemplate.getForObject("http://eureka-client-common/hell?name={name}", String.class);
     }
 
     public String hellFallback(String name, Throwable throwable) {

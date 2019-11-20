@@ -10,8 +10,8 @@ import java.io.IOException;
 /**
  * @author guolanren
  */
-@WebFilter(urlPatterns = "/*", filterName = "hystrixCacheFilter")
 @Component
+@WebFilter(urlPatterns = "/*", filterName = "hystrixCacheFilter")
 public class HystrixCacheFilter implements Filter {
 
     @Override
