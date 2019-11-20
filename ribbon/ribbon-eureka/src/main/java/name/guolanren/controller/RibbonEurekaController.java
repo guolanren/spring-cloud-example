@@ -16,7 +16,7 @@ public class RibbonEurekaController {
 
     @GetMapping("/loadBalanced")
     public String loadBalanced() {
-        return restTemplate.getForObject("http://eureka-client/hello?name=guolanren", String.class);
+        return restTemplate.getForObject("http://eureka-client-common/hello?name=guolanren", String.class);
     }
 
 }

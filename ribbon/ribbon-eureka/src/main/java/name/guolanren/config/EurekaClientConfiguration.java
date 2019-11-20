@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
  * @author guolanren
  */
 @Configuration
-@RibbonClient(name = "eureka-client", configuration = RibbonConfiguration.class)
+@RibbonClient(name = "eureka-client-common", configuration = RibbonConfiguration.class)
 public class EurekaClientConfiguration {
 
     @Bean

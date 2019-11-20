@@ -5,7 +5,6 @@ server:
   port: 9094
 eureka:
   instance:
-#    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance-id:${server.port}}
     instanceId: ${spring.cloud.client.ip-address}:${server.port}
     hostname: ${spring.cloud.client.ip-address}
     prefer-ip-address: true
@@ -16,11 +15,3 @@ eureka:
 #  ribbon:
 #    NFLoadBalancerRuleClassName: name.guolanren.component.MyRule
 #    NFLoadBalancerPingClassName: name.guolanren.component.MyPing
-management:
-  endpoint:
-    shutdown:
-      enabled: true
-  endpoints:
-    web:
-      exposure:
-        include: shutdown,service-registry
