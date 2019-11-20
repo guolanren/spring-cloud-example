@@ -1,6 +1,11 @@
 package name.guolanren.config;
 
+import com.netflix.hystrix.HystrixCommand;
+import com.netflix.hystrix.HystrixCommandGroupKey;
+import com.netflix.hystrix.HystrixCommandKey;
 import feign.Retryer;
+import feign.hystrix.SetterFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
@@ -8,7 +13,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 /**
  * @author guolanren
  */
-public class EurekaClientFeignClientsConfiguration {
+public class EurekaClientCommonFeignClientsConfiguration {
 
     /**
      * 默认ResponseEntityDecoder
@@ -88,9 +93,12 @@ public class EurekaClientFeignClientsConfiguration {
 //        return null;
 //    }
 
-//    @Bean
-//    public SetterFactory setterFactory() {
-//        return null;
-//    }
+    @Bean
+    @ConditionalOnProperty(name = "feign.hystrix.enabled", matchIfMissing = false)
+    public SetterFactory setterFactory() {
+        return (target, method) -> HystrixCommand.Setter
+                .withGroupKey(HystrixCommandGroupKey.Factory.asKey(target.name()))
+                .andCommandKey(HystrixCommandKey.Factory.asKey(method.getName()));
+    }
 
 }
