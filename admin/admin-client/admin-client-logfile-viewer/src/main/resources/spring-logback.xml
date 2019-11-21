@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+
+    <contextName>logback</contextName>
+    <property name="application.name" value="admin-client-logfile-viewer" />
+    <property name="log.path" value="/var/log/${application.name}" />
+    <property name="log.file" value="${log.path}/${application.name}.log" />
+
+    <!--输出到文件-->
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <file>${log.file}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/${application.name}-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+            <!-- 每产生一个日志文件，该日志文件的保存期限为30天 -->
+            <maxHistory>30</maxHistory>
+            <!-- maxFileSize:这是活动文件的大小，默认值是10MB -->
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d %contextName %clr(%-5level) [%thread] (%file:%line\)- %clr(%logger{128}): %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 级别依次为【从高到低】：FATAL > ERROR > WARN > INFO > DEBUG > TRACE  -->
+    <root level="ERROR">
+        <appender-ref ref="file"/>
+    </root>
+
+    <!-- 指定某个包 -->
+    <logger name="name.guolanren" level="INFO" >
+        <appender-ref ref="file"/>
+    </logger>
+</configuration>

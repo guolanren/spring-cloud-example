@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: admin-client-tag
+  boot:
+    admin:
+      client:
+        url: http://127.0.0.1:8787
+        instance:
+          metadata:
+            tags:
+              environment: test
+server:
+  port: 8788
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+#info:
+#  tags:
+#    environment: dev

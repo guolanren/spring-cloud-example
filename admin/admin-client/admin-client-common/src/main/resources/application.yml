@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: admin-client-common
+  boot:
+    admin:
+      client:
+        url: http://127.0.0.1:8787
+server:
+  port: 8788
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

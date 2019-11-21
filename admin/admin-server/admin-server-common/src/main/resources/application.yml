@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: admin-server-common
+server:
+  port: 8787

@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: admin-server-mail-notifications
+  boot:
+    admin:
+      notify:
+        mail:
+          from: ***
+          to: ***
+  mail:
+    port: 25
+    username: ***
+    password: ***
+    protocol: smtp
+    default-encoding: UTF-8
+    host: smtp.sina.com
+server:
+  port: 8787

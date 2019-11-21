@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: admin-client-logfile-viewer
+  boot:
+    admin:
+      client:
+        url: http://127.0.0.1:8787
+logging:
+  file: /var/log/admin-client-logfile-viewer/admin-client-logfile-viewer.log
+  config: classpath:spring-logback.xml
+
+server:
+  port: 8788
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
