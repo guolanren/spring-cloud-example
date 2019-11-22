@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: admin-client-security
+  security:
+    user:
+      name: client
+      password: client
+  boot:
+    admin:
+      client:
+        url: http://127.0.0.1:8787
+        instance:
+          metadata:
+            user.name: ${spring.security.user.name}
+            user.password: ${spring.security.user.password}
+server:
+  port: 8788
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

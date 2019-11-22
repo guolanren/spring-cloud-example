@@ -1,22 +1,13 @@
 spring:
   application:
-    name: admin-client-eureka
+    name: admin-server-eureka-hystrix-dashboard
 server:
-  port: 8788
-
+  port: 8787
 eureka:
   instance:
     instanceId: ${spring.cloud.client.ip-address}:${server.port}
     hostname: ${spring.cloud.client.ip-address}
     prefer-ip-address: true
-#    metadata-map:
-#      user.name: ${spring.security.user.name}
-#      user.password: ${spring.security.user.password}
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
