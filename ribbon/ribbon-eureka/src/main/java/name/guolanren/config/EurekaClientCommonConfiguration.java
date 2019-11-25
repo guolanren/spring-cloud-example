@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
  */
 @Configuration
 @RibbonClient(name = "eureka-client-common", configuration = RibbonConfiguration.class)
-public class EurekaClientConfiguration {
+public class EurekaClientCommonConfiguration {
 
     @Bean
     @LoadBalanced

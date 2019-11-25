@@ -1,6 +1,6 @@
 spring:
   application:
-    name: ribbon-eureka
+    name: ribbon-retry
 server:
   port: 9094
 eureka:
@@ -11,7 +11,9 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
-#eureka-client-common:
-#  ribbon:
-#    NFLoadBalancerRuleClassName: name.guolanren.component.MyRule
-#    NFLoadBalancerPingClassName: name.guolanren.component.MyPing
+eureka-client-common:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RetryRule
+    max-auto-retries: 1
+    max-auto-retries-next-server: 3
+    ok-to-retry-on-all-operations: true
