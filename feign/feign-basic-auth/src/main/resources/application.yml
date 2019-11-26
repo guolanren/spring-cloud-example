@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: feign-basic-auth
+server:
+  port: 9094
+eureka:
+  instance:
+    instanceId: ${spring.cloud.client.ip-address}:${server.port}
+    hostname: ${spring.cloud.client.ip-address}
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka

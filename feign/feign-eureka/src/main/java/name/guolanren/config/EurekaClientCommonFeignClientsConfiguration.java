@@ -1,11 +1,7 @@
 package name.guolanren.config;
 
-import feign.Retryer;
 import org.springframework.cloud.openfeign.FeignClientsConfiguration;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
  * @see FeignClientsConfiguration for the defaults
@@ -14,41 +10,21 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 @Configuration
 public class EurekaClientCommonFeignClientsConfiguration {
 
-    /**
-     * 默认ResponseEntityDecoder
-     */
 //    @Bean
 //    public Decoder feignDecoder() {
 //        return null;
 //    }
 
-    /**
-     * 默认SpringEncoder
-     */
 //    @Bean
 //    public Encoder feignEncoder() {
 //        return null;
 //    }
 
-    /**
-     * 默认Slf4jLogger
-     */
-//    @Bean
-//    public Logger feignLogger() {
-//        return null;
-//    }
-
-    /**
-     * 默认SpringMvcContract
-     */
 //    @Bean
 //    public Contract feignContract() {
 //        return null;
 //    }
 
-    /**
-     * 默认HystrixFeign.Builder
-     */
 //    @Bean
 //    public Feign.Builder feignBuilder() {
 //        return null;
@@ -60,14 +36,19 @@ public class EurekaClientCommonFeignClientsConfiguration {
 //    }
 
 //    @Bean
+//    public Logger feignLogger() {
+//        return null;
+//    }
+
+//    @Bean
 //    public Logger.Level logLevel() {
 //        return null;
 //    }
 
-    @Bean
-    public Retryer feignRetryer() {
-        return new Retryer.Default(100, SECONDS.toMillis(1L), 5);
-    }
+//    @Bean
+//    public Retryer feignRetryer() {
+//        return new Retryer.Default(100, SECONDS.toMillis(1L), 5);
+//    }
 
 //    @Bean
 //    public ErrorDecoder errorDecoder() {
