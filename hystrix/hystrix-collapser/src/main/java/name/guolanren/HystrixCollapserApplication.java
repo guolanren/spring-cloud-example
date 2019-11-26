@@ -14,12 +14,6 @@ import org.springframework.web.client.RestTemplate;
 @EnableHystrix
 public class HystrixCollapserApplication {
 
-    @Bean
-    @LoadBalanced
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
-
     public static void main(String[] args) {
         SpringApplication.run(HystrixCollapserApplication.class, args);
     }

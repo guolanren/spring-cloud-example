@@ -1,6 +1,6 @@
 spring:
   application:
-    name: zuul-eureka
+    name: zuul-filter
 server:
   port: 8700
 eureka:

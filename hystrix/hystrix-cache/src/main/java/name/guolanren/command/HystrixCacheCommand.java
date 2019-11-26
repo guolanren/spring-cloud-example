@@ -22,7 +22,7 @@ public class HystrixCacheCommand {
     @HystrixCommand(commandKey = "hello", fallbackMethod = "helloFallback")
     @CacheResult
     public String hello(@CacheKey String name) {
-        return restTemplate.getForObject("http://eureka-client/hello?name={name}", String.class, name);
+        return restTemplate.getForObject("http://eureka-client-common/hello?name={name}", String.class, name);
     }
 
     public String helloFallback(String name) {
@@ -33,7 +33,7 @@ public class HystrixCacheCommand {
     @HystrixCommand(commandKey = "hell", fallbackMethod = "hellFallback")
     @CacheRemove(commandKey = "hello")
     public String hell(String name) {
-        return restTemplate.getForObject("http://eureka-client/hell?name={name}", String.class);
+        return restTemplate.getForObject("http://eureka-client-common/hell?name={name}", String.class);
     }
 
     public String hellFallback(String name) {

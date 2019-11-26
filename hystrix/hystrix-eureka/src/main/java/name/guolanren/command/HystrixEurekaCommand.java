@@ -22,7 +22,7 @@ import org.springframework.web.client.RestTemplate;
         })
 public class HystrixEurekaCommand {
 
-    private static final Logger logger = LoggerFactory.getLogger(HystrixCommand.class);
+    private static final Logger logger = LoggerFactory.getLogger(HystrixEurekaCommand.class);
 
     @Autowired
     private RestTemplate restTemplate;
