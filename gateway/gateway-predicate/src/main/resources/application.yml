@@ -5,12 +5,12 @@ spring:
     gateway:
       routes:
       - id: after
-        uri: lb://eureka-client
+        uri: lb://eureka-client-common
         predicates:
         - Path=/hello
         - After=2007-12-03T10:15:30+01:00[Europe/Paris]
       - id: before
-        uri: lb://eureka-client
+        uri: lb://eureka-client-common
         predicates:
         - Path=/hell
         - Before=2007-12-03T10:15:30+01:00[Europe/Paris]

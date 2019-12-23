@@ -15,7 +15,7 @@ import java.time.ZonedDateTime;
 @SpringBootApplication
 public class GatewayPredicateApplication {
 
-    public static final String EUREKA_CLIENT_SERVICE = "lb://eureka-client";
+    public static final String EUREKA_CLIENT_SERVICE = "lb://eureka-client-common";
 
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
