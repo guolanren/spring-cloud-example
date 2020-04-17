@@ -5,17 +5,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * @author guolanren
  */
 @RestController
-public class EurekaClientCommonController {
+public class EurekaClientHAController {
 
     @Value("${spring.application.name}:${server.port}")
     String fromWhere;
 
     @GetMapping("/hello")
-    public String hello(@RequestParam String name) {
+    public String hello(@RequestParam String name, HttpSession session) {
+        System.out.println(session.getId());
         return String.format("hello %s from %s", name, fromWhere);
     }
 
