@@ -22,3 +22,7 @@ zuul:
   ribbon:
     eager-load:
       enabled: true
+  # 敏感Header(客户端不传递)
+  sensitive-headers:
+  # 忽略Header(服务间不传递)
+#  ignored-headers: Authorization

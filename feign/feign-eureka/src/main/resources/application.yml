@@ -11,3 +11,22 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
+feign:
+  client:
+    config:
+      default:
+        connectionTime.out: 1000
+        readTimeout: 10000
+      eureka-client-common:
+        connectionTimeout: 1000
+        readTimeout: 10000
+  compression:
+    # 压缩请求
+    request:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 2048
+    # 压缩响应
+    response:
+      enabled: true
+

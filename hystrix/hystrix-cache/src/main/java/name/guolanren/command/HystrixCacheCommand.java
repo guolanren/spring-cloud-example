@@ -32,7 +32,7 @@ public class HystrixCacheCommand {
 
     @HystrixCommand(commandKey = "hell", fallbackMethod = "hellFallback")
     @CacheRemove(commandKey = "hello")
-    public String hell(String name) {
+    public String hell(@CacheKey String name) {
         return restTemplate.getForObject("http://eureka-client-common/hell?name={name}", String.class);
     }
 

@@ -13,6 +13,8 @@ eureka:
       defaultZone: http://localhost:8761/eureka
 eureka-client-common:
   ribbon:
+    ConnectTimeout: 30000
+    ReadTimeout: 30000
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RetryRule
     max-auto-retries: 1
     max-auto-retries-next-server: 3
